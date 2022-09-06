@@ -30,20 +30,7 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   },
 }));
 
-const getDataFirebase = async () => {
-  // Query the first page of docs
-  const first = query(collection(db, "tables"));
-  const documentSnapshots = await getDocs(first);
 
-  // Get the last visible document
-  const lastTable = documentSnapshots.docs[documentSnapshots.docs.length-1];
-  // console.log("last", await documentSnapshots.docs[0].data().people);
-  return documentSnapshots.docs.map((data)=>{
-    data.data().people.map((e)=>{console.log(e.num, e.name, e.lastName)})
-  })
-}
-
-getDataFirebase()
 
 function createData(chairNum, name, lastName) {
   return { chairNum, name, lastName };
@@ -57,15 +44,14 @@ export default function Tables() {
   return (
     <TableContainer component={Paper} sx={{width: 350}}>
       <Table sx={{ minwidth: 300 }} aria-label="customized table">
-        {/* <TableHead>
+        <TableHead>
           <TableRow>
-            <StyledTableCell>Dessert (100g serving)</StyledTableCell>
-            <StyledTableCell align="right">Calories</StyledTableCell>
-            <StyledTableCell align="right">Fat&nbsp;(g)</StyledTableCell>
-            <StyledTableCell align="right">Carbs&nbsp;(g)</StyledTableCell>
-            <StyledTableCell align="right">Protein&nbsp;(g)</StyledTableCell>
+            <StyledTableCell>N°</StyledTableCell>
+            <StyledTableCell align="right">Nombre</StyledTableCell>
+            <StyledTableCell align="right">Apellido</StyledTableCell>
+
           </TableRow>
-        </TableHead> */}
+        </TableHead>
         <TableBody>
           {rows.map((row) => (
             <StyledTableRow key={row.chairNum}>

@@ -34,7 +34,7 @@ const Form = () => {
             >
                 <TextField label='Nombre' id="outlined-basic" />
                 <br/>
-                <TextField label='Apellido' id="outlined-basic"S/>
+                <TextField label='Apellido' id="outlined-basic"/>
                 <br/>
                 <TextField label='Mesa' id="outlined-basic" />
                 <br/>
