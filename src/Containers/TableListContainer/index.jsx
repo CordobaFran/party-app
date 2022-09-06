@@ -14,26 +14,29 @@ const TableListContainer = () => {
       // Query the first page of docs
       const first = query(collection(db, "tables"));
       const documentSnapshots = await getDocs(first);
+      const tablesLists = []
     
       // Get the last visible document
       const lastTable = documentSnapshots.docs[documentSnapshots.docs.length-1];
       // console.log("last", await documentSnapshots.docs[0].data().people);
-      return documentSnapshots.docs.map((data)=>{
-        list.push(data.data())
-      })
+      documentSnapshots.docs.map((data)=>{
+        tablesLists.push({table: data.data()})
+      });
+      setList(tablesLists)
+
     }
     getDataFirebase()
     
     console.log(list)
-  }, [list])
+  }, [])
   
   
 
   return (
     <div>
         {
-          list.map( ()=>{
-            return <Tables/>
+          list.map( (table)=>{
+            return <Tables key={table.num}/>
           }
           )
         }
