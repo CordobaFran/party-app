@@ -1,5 +1,5 @@
 import './App.css';
-import AddGuest from './Pages/AddGuest';
+import AddGuest from './Pages/AddGuest'
 import {BrowserRouter,Routes,Route} from "react-router-dom";
 import GuestList from './Pages/GuestList';
 
