@@ -7,8 +7,9 @@ import { IconButton, ListItemIcon, ListItemText, Tooltip } from '@mui/material';
 import PersonAddIcon from '@mui/icons-material/PersonAdd';
 import GroupIcon from '@mui/icons-material/Group';
 import PersonRemoveAlt1Icon from '@mui/icons-material/PersonRemoveAlt1';
+import ModalFormAddGuest from '../ModalFormAddGuest'
 
-export default function MenuBtnAddGuest() {
+const MenuBtnAddGuest = (TableData) => {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -17,6 +18,10 @@ export default function MenuBtnAddGuest() {
   const handleClose = () => {
     setAnchorEl(null);
   };
+
+  const handleAdd = () => {
+    console.log(TableData)
+  }
 
   return (
     <div>
@@ -49,11 +54,11 @@ export default function MenuBtnAddGuest() {
             horizontal: 'left',
           }}
       >
-        <MenuItem onClick={handleClose}>
+        <MenuItem onClick={handleAdd}>
           <ListItemIcon>
             <PersonAddIcon fontSize="small" />
           </ListItemIcon>
-          <ListItemText>Agregar</ListItemText>
+          <ModalFormAddGuest/>
         </MenuItem>
         <MenuItem onClick={handleClose}>
           <ListItemIcon>
@@ -71,3 +76,5 @@ export default function MenuBtnAddGuest() {
     </div>
   );
 }
+
+export default MenuBtnAddGuest
