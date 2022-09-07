@@ -8,6 +8,7 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { db } from '../Firebase/config';
+import MenuBtnAddGuest from '../MenuBtnAddGuest';
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -38,10 +39,10 @@ export default function Tables(data) {
   const rows = [
 
   ]
-
-  data.data.forEach(element => {
-    console.log(element);
-    rows.push(createData(element.num, element.people.name, element.people.lastName))
+  // console.log(data.data.people)
+  data.data.people.forEach(element => {
+    // console.log(element);
+    rows.push(createData(element.num, element.name, element.lastName))
   })
   
 
@@ -51,9 +52,15 @@ export default function Tables(data) {
       <Table sx={{ minwidth: 300 }} aria-label="customized table">
         <TableHead>
           <TableRow>
+            <StyledTableCell align="center" colSpan={4} sx={{fontSize: 24}}>
+              Mesa {data.data.id}
+            </StyledTableCell>
+          </TableRow>
+          <TableRow>
             <StyledTableCell>N°</StyledTableCell>
             <StyledTableCell align="right">Nombre</StyledTableCell>
             <StyledTableCell align="right">Apellido</StyledTableCell>
+            <StyledTableCell></StyledTableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -62,8 +69,9 @@ export default function Tables(data) {
               <StyledTableCell component="th" scope="row">
                 {row.chairNum}
               </StyledTableCell>
-              <StyledTableCell align="right">{row.name}</StyledTableCell>
-              <StyledTableCell align="right">{row.lastName}</StyledTableCell>
+              <StyledTableCell align="center">{row.name}</StyledTableCell>
+              <StyledTableCell align="center">{row.lastName}</StyledTableCell>
+              <StyledTableCell align='right'><MenuBtnAddGuest/></StyledTableCell>
             </StyledTableRow>
           ))}
         </TableBody>
