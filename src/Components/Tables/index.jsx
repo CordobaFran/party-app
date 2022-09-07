@@ -7,7 +7,6 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import { collection, setDoc, doc, query, orderBy, startAfter, limit, getDocs } from "firebase/firestore";
 import { db } from '../Firebase/config';
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
@@ -30,17 +29,23 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   },
 }));
 
-
-
 function createData(chairNum, name, lastName) {
   return { chairNum, name, lastName };
 }
 
-const rows = [
-  createData("01", "Franco", "Cordoba")
-]
 
-export default function Tables() {
+export default function Tables(data) {
+  const rows = [
+
+  ]
+
+  data.data.forEach(element => {
+    console.log(element);
+    rows.push(createData(element.num, element.people.name, element.people.lastName))
+  })
+  
+
+
   return (
     <TableContainer component={Paper} sx={{width: 350}}>
       <Table sx={{ minwidth: 300 }} aria-label="customized table">
@@ -49,7 +54,6 @@ export default function Tables() {
             <StyledTableCell>N°</StyledTableCell>
             <StyledTableCell align="right">Nombre</StyledTableCell>
             <StyledTableCell align="right">Apellido</StyledTableCell>
-
           </TableRow>
         </TableHead>
         <TableBody>

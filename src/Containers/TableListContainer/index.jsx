@@ -19,8 +19,8 @@ const TableListContainer = () => {
       // Get the last visible document
       const lastTable = documentSnapshots.docs[documentSnapshots.docs.length-1];
       // console.log("last", await documentSnapshots.docs[0].data().people);
-      documentSnapshots.docs.map((data)=>{
-        tablesLists.push({table: data.data()})
+      documentSnapshots.forEach((data)=>{
+        tablesLists.push({id: data.id, ...data.data()})
       });
       setList(tablesLists)
 
@@ -30,13 +30,11 @@ const TableListContainer = () => {
     console.log(list)
   }, [])
   
-  
-
   return (
     <div>
         {
           list.map( (table)=>{
-            return <Tables key={table.num}/>
+            return <Tables data={list} key={table.id}/>
           }
           )
         }
