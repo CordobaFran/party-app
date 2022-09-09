@@ -58,7 +58,7 @@ const MenuBtnAddGuest = (TableData) => {
           <ListItemIcon>
             <PersonAddIcon fontSize="small" />
           </ListItemIcon>
-          <ModalFormAddGuest/>
+          <ModalFormAddGuest tableData={TableData}/>
         </MenuItem>
         <MenuItem onClick={handleClose}>
           <ListItemIcon>

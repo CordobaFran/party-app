@@ -72,7 +72,7 @@ export default function Tables(data) {
               <StyledTableCell align="center">{row.name}</StyledTableCell>
               <StyledTableCell align="center">{row.lastName}</StyledTableCell>
               <StyledTableCell align='right'>
-                <MenuBtnAddGuest tableData={{tableNum: data.data.id, num: row.chairNum}}/>
+                <MenuBtnAddGuest tableData={{tableNum: data.data.id, chairNum: row.chairNum}}/>
               </StyledTableCell>
             </StyledTableRow>
           ))}
